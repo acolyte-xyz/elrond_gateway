@@ -1,11 +1,11 @@
-name: Test Elrond SDK
+name: Test Elrond Gateway
 
 on:
   pull_request:
     branches: [main]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     container:
