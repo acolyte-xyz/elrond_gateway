@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:elrond_gateway/src/response/addresses/get_address/get_address.dart';
+import 'package:elrond_gateway/src/response/addresses/get_address_balance/get_address_balance.dart';
 import 'package:elrond_gateway/src/response/addresses/get_address_nonce/get_address_nonce.dart';
 import 'package:elrond_gateway/src/response/response.dart';
 import 'package:test/test.dart';
@@ -49,6 +50,23 @@ void main() {
         GetAddressNonceResponse.fromJson(json.decode(getAddressNonceJson));
     expect(response.data, isNotNull);
     expect(response.data!.nonce, equals(12));
+    expect(response.error, isEmpty);
+    expect(response.code, equals(GatewayCode.successful));
+  });
+
+  test('get address balance', () {
+    final getAddressBalanceJson = '''{
+  "data": {
+    "balance": "100000000000000000000"
+  },
+  "error": "",
+  "code": "successful"
+}''';
+
+    final response =
+        GetAddressBalanceResponse.fromJson(json.decode(getAddressBalanceJson));
+    expect(response.data, isNotNull);
+    expect(response.data!.balance, equals('100000000000000000000'));
     expect(response.error, isEmpty);
     expect(response.code, equals(GatewayCode.successful));
   });
