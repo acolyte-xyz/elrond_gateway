@@ -18,7 +18,7 @@ class _Addresses implements Addresses {
   String? baseUrl;
 
   @override
-  Future<GetAddressResponse> getAddress() async {
+  Future<GetAddressResponse> getAddress(bech32Address) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -26,7 +26,7 @@ class _Addresses implements Addresses {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<GetAddressResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/address/{bech32Address}',
+                .compose(_dio.options, '/address/${bech32Address}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = GetAddressResponse.fromJson(_result.data!);
@@ -34,7 +34,7 @@ class _Addresses implements Addresses {
   }
 
   @override
-  Future<GetAddressNonceResponse> getAddressNonce() async {
+  Future<GetAddressNonceResponse> getAddressNonce(bech32Address) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -42,7 +42,7 @@ class _Addresses implements Addresses {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<GetAddressNonceResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/address/{bech32Address}/nonce',
+                .compose(_dio.options, '/address/${bech32Address}/nonce',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = GetAddressNonceResponse.fromJson(_result.data!);
@@ -50,7 +50,7 @@ class _Addresses implements Addresses {
   }
 
   @override
-  Future<GetAddressBalanceResponse> getAddressBalance() async {
+  Future<GetAddressBalanceResponse> getAddressBalance(bech32Address) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -58,10 +58,27 @@ class _Addresses implements Addresses {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<GetAddressBalanceResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/address/:bech32Address/balance',
+                .compose(_dio.options, '/address/${bech32Address}/balance',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = GetAddressBalanceResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<GetAddressTransactionsResponse> getAddressTransactions(
+      bech32Address) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<GetAddressTransactionsResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/address/${bech32Address}/transactions',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = GetAddressTransactionsResponse.fromJson(_result.data!);
     return value;
   }
 
