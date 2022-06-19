@@ -1,4 +1,4 @@
-name: Test Elrond Gateway
+name: Elrond Gateway
 
 on:
   pull_request:
