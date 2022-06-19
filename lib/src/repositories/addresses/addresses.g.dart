@@ -85,12 +85,12 @@ class _Addresses implements Addresses {
   @override
   Future<GetAllStorageForAddressResponse> getAllStorageForAddress(
       bech32Address) async {
-      const _extra = <String, dynamic>{};
+    const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-          _setStreamType<GetAllStorageForAddressResponse>(
+        _setStreamType<GetAllStorageForAddressResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/address/${bech32Address}/keys',
                     queryParameters: queryParameters, data: _data)
@@ -98,7 +98,7 @@ class _Addresses implements Addresses {
     final value = GetAllStorageForAddressResponse.fromJson(_result.data!);
     return value;
   }
-  
+
   @override
   Future<GetStorageValueForAddressResponse> getStorageValueForAddress(
       bech32Address, key) async {

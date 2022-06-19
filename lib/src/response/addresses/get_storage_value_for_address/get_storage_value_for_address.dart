@@ -7,9 +7,9 @@ part 'get_storage_value_for_address.g.dart';
 @immutable
 @JsonSerializable()
 class ValueData {
-  final int nonce;
+  final String value;
 
-  const ValueData(this.nonce);
+  const ValueData(this.value);
 
   factory ValueData.fromJson(Map<String, dynamic> json) =>
       _$ValueDataFromJson(json);

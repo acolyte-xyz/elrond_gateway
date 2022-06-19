@@ -7,11 +7,11 @@ part of 'get_storage_value_for_address.dart';
 // **************************************************************************
 
 ValueData _$ValueDataFromJson(Map<String, dynamic> json) => ValueData(
-      json['nonce'] as int,
+      json['value'] as String,
     );
 
 Map<String, dynamic> _$ValueDataToJson(ValueData instance) => <String, dynamic>{
-      'nonce': instance.nonce,
+      'value': instance.value,
     };
 
 GetStorageValueForAddressResponse _$GetStorageValueForAddressResponseFromJson(
