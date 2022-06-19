@@ -27,11 +27,11 @@ abstract class Addresses {
   Future<GetAddressTransactionsResponse> getAddressTransactions(
       @Path() String bech32Address);
 
-  @GET('/address/{bech32Address}/keys')
-  Future<GetAllStorageForAddressResponse> getAllStorageForAddress(
-      @Path() String bech32Address);
-
   @GET('/address/{bech32Address}/key/{key}')
   Future<GetStorageValueForAddressResponse> getStorageValueForAddress(
       @Path() String bech32Address, @Path() String key);
+
+  @GET('/address/{bech32Address}/keys')
+  Future<GetAllStorageForAddressResponse> getAllStorageForAddress(
+      @Path() String bech32Address);
 }
